@@ -1,0 +1,105 @@
+C语言程序设计
+UNIX和C语言的发展历程
+-1967年 剑桥大学 Martin Richards BCPL语言
+-1970年 贝尔实验室 Ken Thompson & Dennis Ritche PDP-7 B语言 Unix操作系统
+-1972年 贝尔实验室 Dennis Ritche C语言
+-1973年 贝尔实验室 Ken Thompson & Dennis Ritche 重写Unix
+实验环境 —— GNU/Linux环境
+-Linus Torvalds Linux系统 免费、开源、工具链丰富
+-Andrew Rubin Android系统
+授课内容
+-主要语法、用法和思想
+-程序设计方法
+-底层架构扩展
+程序设计的步骤
+s1 编辑程序（文本文件）通过gedit进行编辑/vi编辑器 编辑完成后，将文件保存到磁盘上，文件后缀为.c 
+s2 编译程序（翻译：C语言->机器语言）利用编译器进行编译.c文件 gcc -o helloworld helloworld.c
+s3 利用GNU提供的调试工具
+s4 运行程序 ./helloworld（当前目录）
+
+最简单的C语言程序-helloworld
+#include "stdio.h"//系统库函数，其定义在“stdio.h”中声明，因此需要在前面包含头文件（预处理）
+//int是一个整型，integer，函数类型代表函数返回值的类型
+//()为参数列表，表示无参函数
+int main(){//定义main函数，主函数是程序的入口，程序从main函数开始执行//这是函数头
+    printf("helloworld!\n");//;表示语句的结束，不能省略
+    //函数名（参数列表）：函数调用的基本形式
+    //此处函数仅调用一个字符串参数
+    //作用：向系统调用printf函数，执行printf的功能
+    return 0;
+    //使main函数返回一个返回值0（整数类型）
+    //return是C语言的保留字
+}
+//这是函数体
+//{}表示函数体的开始与结束
+
+执行时：
+s1 操作系统找到main函数，从main函数开始执行
+s2 执行第一条语句，打印
+s3 执行第二条语句，返回值
+
+编译命令：gcc XXX.c /gcc -o helloworld ex1_helloworld.c/gcc -g -o helloworld ex1_helloworld.c（含调试信息）
+运行命令：完整路径/可执行文件名 相对路径/可执行文件名
+调试命令：gdb 可执行文件
+
+第二个程序
+#include "stdio.h"
+
+int main(){
+    int a,b,sum;
+    //为3个变量分配3个单元，每个变量占4个字节
+    //范围：最小值-2147483648 最大值：2147483647
+    //内存单元分别用a，b，sum命名
+    //数据可以用代码改变
+    a = 123;
+    //将123赋值给变量a
+    //‘=’是赋值运算符，变量 = 算式
+    b = 456;
+    sum = a + b;
+    //求变量a和b的和，将结果赋值给sum
+    printf("Sum is %d\n", sum);
+    //前面的参数被称为格式串
+    //用sum中的内容替代%d，并将字符串输出到屏幕上
+    return 0;
+}
+
+存储——代码和数据
+-CPU：中央处理器
+-GPU：图像处理器
+-memory：内存
+-I/O devices
+
+内存
+-单位：字节byte（8位bit，每位存一个二进制数）
+-编址：代表地址的编码
+
+#include "stdio.h"
+
+int main() {
+    int max(int, int);//函数声明
+    int a, b, c;
+    scanf("%d,%d", &a, &b);
+    c = max(a, b);//a,b为实参
+    printf("max = %d\n", c);
+}
+
+int max(int x, int y) {//x,y为形参，调用时将实参值拷贝到形参中
+    int z;
+    if(x > y) {
+        z = x;
+    }
+    //if语句
+    //if(expression),若成立，执行if语句，否则，执行else语句
+    else {
+        z = y;
+    }
+    return z;
+}
+
+程序由代码和数据组成
+通过代码操作数据，以完成功能
+
+全局变量（函数体外）vs 局部变量（函数体内）
+
+全局数据区/栈/堆（动态分配的数据）
+注释//或/**/

@@ -1,0 +1,23 @@
+#include "stdio.h"
+
+int main() {
+    int a, b, c;
+    scanf("%d%d%d", &a, &b, &c);
+    int min3(int a, int b, int c);
+    int result = min3(a, b, c);
+    printf("%d", result);
+}
+
+int min3(int a, int b, int c) {
+    if(a <= b) {
+        if(a <= c) {
+            return a;
+        }
+    }
+    else {
+        if(b <= c) {
+            return b;
+        }
+    }
+    return c;
+}
